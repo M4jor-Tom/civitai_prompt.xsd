@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    
+    <!-- Root Element -->
+    <xs:element name="civitai-ai-prompt">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="prompt-details" type="PromptDetails" />
+                <xs:element name="image-parameters" type="ImageParameters" />
+                <xs:element name="resources" type="Resources" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Prompt Details -->
+    <xs:complexType name="PromptDetails">
+        <xs:sequence>
+            <xs:element name="positive-prompt" type="xs:string" />
+            <xs:element name="negative-prompt" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Image Parameters -->
+    <xs:complexType name="ImageParameters">
+        <xs:sequence>
+            <xs:element name="width" type="xs:int" />
+            <xs:element name="height" type="xs:int" />
+            <xs:element name="steps" type="xs:int" />
+            <xs:element name="sampler" type="xs:string" />
+            <xs:element name="cfg-scale" type="xs:decimal" />
+            <xs:element name="seed" type="xs:long" />
+            <xs:element name="clip-skip" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Resources usages -->
+    <xs:complexType name="LoraWheight">
+        <xs:complexContent>
+            <xs:extension base="Resource">
+                <xs:sequence>
+                    <xs:element name="wheight" type="xs:float" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Resources -->
+    <xs:complexType name="Resources">
+        <xs:sequence>
+            <xs:element name="base-model" type="Resource" />
+            <xs:element name="lora" type="LoraWheight" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="embedding" type="Resource" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="vae" type="Resource" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Generic Resource Type -->
+    <xs:complexType name="Resource">
+        <xs:sequence>
+            <xs:element name="hash" type="xs:string" />
+            <xs:element name="id" type="xs:string" />
+            <xs:element name="version" type="xs:string" />
+            <xs:element name="display-name" type="xs:string" />
+            <!-- <xs:element name="download-url" type="xs:anyURI" minOccurs="1" maxOccurs="unbounded"/> -->
+            <xs:element name="page-url" type="xs:anyURI" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
