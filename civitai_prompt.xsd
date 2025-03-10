@@ -16,7 +16,7 @@
     <xs:complexType name="PromptDetails">
         <xs:sequence>
             <xs:element name="positive-prompt" type="xs:string" />
-            <xs:element name="negative-prompt" type="xs:string" />
+            <xs:element name="negative-prompt" type="xs:string" minOccurs="0" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
 
@@ -28,7 +28,7 @@
             <xs:element name="steps" type="xs:int" />
             <xs:element name="sampler" type="xs:string" />
             <xs:element name="cfg-scale" type="xs:decimal" />
-            <xs:element name="seed" type="xs:long" />
+            <xs:element name="seed" type="xs:long" minOccurs="0" maxOccurs="1" />
             <xs:element name="clip-skip" type="xs:int" />
         </xs:sequence>
     </xs:complexType>
