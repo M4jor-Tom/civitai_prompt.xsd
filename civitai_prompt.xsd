@@ -34,11 +34,11 @@
     </xs:complexType>
 
     <!-- Resources usages -->
-    <xs:complexType name="LoraWheight">
+    <xs:complexType name="LoraWeight">
         <xs:complexContent>
             <xs:extension base="Resource">
                 <xs:sequence>
-                    <xs:element name="wheight" type="xs:float" />
+                    <xs:element name="weight" type="xs:float" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -48,7 +48,7 @@
     <xs:complexType name="Resources">
         <xs:sequence>
             <xs:element name="base-model" type="Resource" />
-            <xs:element name="lora" type="LoraWheight" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="lora" type="LoraWeight" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="embedding" type="Resource" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="vae" type="Resource" minOccurs="0" maxOccurs="1" />
         </xs:sequence>
